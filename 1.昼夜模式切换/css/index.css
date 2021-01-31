@@ -1,0 +1,111 @@
+* {
+  /* 始化 清除元素的内外边距 */
+  margin: 0;
+  padding: 0;
+}
+body {
+  /* 弹性布局，使页面元素水平居中、垂直居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 使页面占浏览器可视区域的宽和高度 */
+  width: 100vm;
+  height: 100vh;
+}
+.background {
+  /* 绝对定位，因为该元素没有父元素，所以默认以浏览器可视区域来定位 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #c2e9f6;
+  /* 元素的堆叠顺序，不加此属性其他元素会被覆盖，是负值即可 */
+  z-index: -1;
+  /* 提前加好元素的过渡，不然一个一个加会晕，ease-in是从慢速开始一直到结束 */
+  transition: all 0.25s ease-in;
+}
+input {
+  /* 隐藏复选框 */
+  display: none;
+}
+label {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  border-radius: 100px;
+  border: 5px solid #72cce3;
+  background-color: #96dcee;
+  /* 
+    transition-property：规定设置过渡效果的 CSS 属性的名称。
+    transition-duration：规定完成过渡效果需要多少秒或毫秒。
+    transition-timing-function：规定速度效果的速度曲线。
+    transition-delay：定义过渡效果何时开始。 
+  */
+  transition: all 0.35s ease-in;
+}
+/* 添加伪元素：在内容的前一部分 */
+label::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: 5px solid #f5eb71;
+  background-color: #fffaa8;
+  transition: all 0.35s ease-in;
+  /*   
+  使用简写属性，将动画与 div 元素绑定：
+  animation-name	规定需要绑定到选择器的 keyframe 名称。。
+  animation-duration	规定完成动画所花费的时间，以秒或毫秒计。
+  animation-timing-function	规定动画的速度曲线。
+  animation-delay	规定在动画开始之前的延迟。
+  animation-iteration-count	规定动画应该播放的次数。
+  animation-direction	规定是否应该轮流反向播放动画。
+   */
+  animation: switch-reverse 0.35s forwards;
+  /* 鼠标移入变小手 */
+  cursor: pointer;
+}
+label::after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  left: 143px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: -13px 0 0 2px #e8e8ea, -24px 14px -2px #e8e8ea;
+  /* 不透明度为0，即隐藏 */
+  opacity: 0;
+}
+label span {
+  position: relative;
+  top: 45px;
+  left: 135px;
+  /* span为行内元素，需设置为块级元素才能设置宽度和高度 */
+  display: block;
+  width: 10px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: all 0.15s ease-in;
+}
+/* 将两个伪元素相同的代码写一块 */
+label span::before,
+label span::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: all 0.15s ease-in;
+}
+
+label span::before {
+    top: 5px;
+    left: -20px;
+}   
