@@ -108,4 +108,8 @@ label span::after {
 label span::before {
     top: 5px;
     left: -20px;
+}
+label span::after {
+  top: 5px;
+  left: -10px;
 }   
